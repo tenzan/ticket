@@ -13,7 +13,8 @@ class ClientsController < ApplicationController
       flash[:notice] = 'Client has been created.'
       redirect_to @client
     else
-      # nothing yet
+      flash.now[:alert] = 'Client has not been created.'
+      render 'new'
     end
   end
   
