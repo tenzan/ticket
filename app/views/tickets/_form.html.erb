@@ -1,0 +1,5 @@
+<%= simple_form_for([client, ticket]) do |f| %>
+    <%= f.input :subject %>
+    <%= f.input :details %>
+    <%= f.button :submit, class: 'btn-primary' %>
+<% end %>

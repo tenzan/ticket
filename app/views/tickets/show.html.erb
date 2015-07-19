@@ -1,0 +1,9 @@
+<div id="ticket">
+  <header>
+    <h1><%= @client.name %></h1>
+  </header>
+  <header>
+    <h2><%= @ticket.subject %></h2>
+  </header>
+  <%= simple_format(@ticket.details) %>
+</div>

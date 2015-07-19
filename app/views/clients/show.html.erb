@@ -12,3 +12,10 @@
 </header>
 
 <p><%= @client.description %></p>
+
+<header>
+  <h2>Tickets</h2>
+  <ul class="actions">
+    <li><%= link_to 'New Ticket', new_client_ticket_path(@client), class: 'new' %></li>
+  </ul>
+</header>
