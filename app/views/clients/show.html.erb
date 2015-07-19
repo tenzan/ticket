@@ -3,3 +3,8 @@
 <p><%= @client.description %></p>
 
 <%= link_to 'Edit Client', edit_client_path(@client) %>
+<%= link_to 'Delete Client', 
+	client_path(@client),
+	method: :delete,
+	data: { confirm: 'Are you sure you want to delete this project?' }
+%>
