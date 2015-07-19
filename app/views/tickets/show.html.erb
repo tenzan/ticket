@@ -4,6 +4,10 @@
   </header>
   <header>
     <h2><%= @ticket.subject %></h2>
+
+    <ul class='actions'>
+    	<li><%= link_to 'Edit Ticket', [:edit, @client, @ticket], class: 'edit' %></li>
+    </ul>
   </header>
   <%= simple_format(@ticket.details) %>
 </div>
