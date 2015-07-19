@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.feature 'Users can view tickets' do
   before do
+    author = FactoryGirl.create(:user)
+
     microsoft = FactoryGirl.create(:client, name: 'Microsoft')
     FactoryGirl.create(:ticket, client: microsoft,
+                       author: author,
                        subject: 'Windows Update',
                        details: 'Update not working!')
 

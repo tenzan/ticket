@@ -1,7 +1,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
-@import 'clients.scss';
+@import 'clients';
+@import "tickets";
 @import "responsive";
 
 a.new, a.edit, a.delete {
@@ -9,38 +10,38 @@ a.new, a.edit, a.delete {
       &:before {
         font-family: "FontAwesome";
         padding-right: 0.5em;
-	} 
+	}
 }
 
 a.new {
 	@extend .btn-success;
     &:before {
 		@extend .fa-plus;
-	} 
+	}
 }
-    
+
 a.edit {
 	@extend .btn-primary;
     &:before {
 		@extend .fa-pencil;
-	} 
+	}
 }
 
 a.delete {
 	@extend .btn-danger;
      &:before {
        @extend .fa-trash;
-	} 
+	}
 }
 
 header {
       @extend .page-header;
       position: relative;
       padding-bottom: 0px;
-	  
+
       &:first-child {
         margin-top: 20px;
-	} 
+	}
 }
 
 form {

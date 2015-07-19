@@ -5,6 +5,8 @@
   <header>
     <h2><%= @ticket.subject %></h2>
 
+
+
     <ul class='actions'>
     	<li><%= link_to 'Edit Ticket', [:edit, @client, @ticket], class: 'edit' %></li>
     	<li><%= link_to "Delete Ticket", [@client, @ticket], method: :delete,
@@ -12,5 +14,16 @@
 	     class: "delete" %></li>
     </ul>
   </header>
+
+  <table id="attributes">
+     <tr>
+       <th>Author:</th>
+       <td><%= @ticket.author.email %></td>
+     </tr>
+     <tr>
+       <th>Created:</th>
+       <td><%= time_ago_in_words(@ticket.created_at) %> ago</td>
+      </tr>
+  </table>
   <%= simple_format(@ticket.details) %>
 </div>

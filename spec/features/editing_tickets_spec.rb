@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "Users can edit existing tickets" do
+  let(:author) { FactoryGirl.create(:user) }
   let(:client) { FactoryGirl.create(:client) }
-  let(:ticket)  { FactoryGirl.create(:ticket, client: client) }
+  let(:ticket) do
+    FactoryGirl.create(:ticket, client: client, author: author)
+  end
 
   before do
     visit client_ticket_path(client, ticket)
@@ -24,7 +27,7 @@ RSpec.feature "Users can edit existing tickets" do
   scenario "with invalid attributes" do
     fill_in "Subject", with: ""
     click_button "Update Ticket"
-    
+
     expect(page).to have_content "Ticket has not been updated."
   end
 end
