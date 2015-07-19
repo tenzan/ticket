@@ -19,3 +19,12 @@
     <li><%= link_to 'New Ticket', new_client_ticket_path(@client), class: 'new' %></li>
   </ul>
 </header>
+
+<ul id="tickets">
+  <% @client.tickets.each do |ticket| %>
+      <li>
+        #<%= ticket.id %> -
+        <%= link_to ticket.subject, [@client, ticket] %>
+      </li>
+  <% end %>
+</ul>
