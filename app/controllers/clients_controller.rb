@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
   def index
     @clients = Client.all
   end
@@ -20,15 +21,12 @@ class ClientsController < ApplicationController
   end
   
   def show
-    @client = Client.find(params[:id])
   end
   
   def edit
-    @client = Client.find(params[:id])
   end
   
   def update
-    @client = Client.find(params[:id])
     
     if @client.update(client_params)
       flash[:notice] = 'Client has been updated.'
@@ -40,7 +38,6 @@ class ClientsController < ApplicationController
   end
   
   def destroy
-    @client = Client.find(params[:id])
     @client.destroy
     
     flash[:notice] = 'Client has been deleted.'
@@ -48,6 +45,13 @@ class ClientsController < ApplicationController
   end
   
   private
+  
+  def set_client
+    @client = Client.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'The client you were looking for could not be found'
+    redirect_to clients_path
+  end
   
   def client_params
     params.require(:client).permit(:name, :description)
