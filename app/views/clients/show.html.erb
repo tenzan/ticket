@@ -4,8 +4,8 @@
 
 	<ul class = 'actions'>
 		<li><%= link_to 'Edit Client', edit_client_path(@client), class: 'edit' %></li>
-		<li><%= link_to 'Delete Client', 
-			client_path(@client), method: :delete,
+		<li><%= link_to 'Delete Client',
+			admin_client_path(@client), method: :delete,
 			data: { confirm: 'Are you sure you want to delete this project?' },
 			class: 'delete' %></li>
 	</ul>
