@@ -1,9 +1,11 @@
 <header>
 <h1>Clients</h1>
 
+<% admins_only do %>
 <ul class='actions'>
 <li><%= link_to 'New Client', new_admin_client_path, class: 'new' %></li>
 </ul>
+<% end %>
 
 </header>
 
