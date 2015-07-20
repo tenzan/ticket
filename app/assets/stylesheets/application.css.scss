@@ -3,6 +3,7 @@
 @import 'font-awesome';
 @import 'clients';
 @import "tickets";
+@import "admin/application";
 @import "responsive";
 
 a.new, a.edit, a.delete {
@@ -63,4 +64,13 @@ ul.actions {
 
 .alert-alert {
 	@extend .alert-danger;
+}
+
+#admin .col-md-3 h2 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #959595;
+  padding-left: 15px;
 }
