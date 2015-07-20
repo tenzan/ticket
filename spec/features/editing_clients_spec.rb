@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can edit existing clients' do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:client) { FactoryGirl.create(:client, name: "Microsoft") }
+
   before do
-    FactoryGirl.create(:client, name: 'Microsoft')
+    login_as(user)
+    assign_role!(user, :viewer, client)
   
     visit '/'
     click_link 'Microsoft'

@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    authorize @client, :show?
   end
 
   def edit
