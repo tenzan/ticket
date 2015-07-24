@@ -66,4 +66,40 @@ describe ClientPolicy do
     end
   end
 
+  permissions :update? do
+    let(:user) { FactoryGirl.create :user}
+    let(:client) {FactoryGirl.create :client}
+
+    it 'blocks anonymous users' do
+      expect(subject).not_to permit(nil, client)
+    end
+
+    it "doesn't allow viewers of the client" do
+      assign_role!(user, :viewer, client)
+      expect(subject).not_to permit(user, client)
+    end
+
+    it "doesn't allow editors of the client" do
+      assign_role!(user, :editor, client)
+      expect(subject).not_to permit(user, client)
+    end
+
+    it 'allows managers of the client' do
+      assign_role!(user, :manager, client)
+      expect(subject).to permit(user, client)
+    end
+
+    it 'allows administrators' do
+      admin = FactoryGirl.create :user, :admin
+      expect(subject).to permit(admin, client)
+    end
+
+    it "doesn't allow users assigned to other clients" do
+      other_client = FactoryGirl.create :client
+      assign_role!(user, :manager, other_client)
+      expect(subject).not_to permit(user, client)
+    end
+
+  end
+
 end

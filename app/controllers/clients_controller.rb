@@ -10,10 +10,11 @@ class ClientsController < ApplicationController
   end
 
   def edit
+    authorize @client, :update?
   end
 
   def update
-
+    authorize @client, :update?
     if @client.update(client_params)
       flash[:notice] = 'Client has been updated.'
       redirect_to @client

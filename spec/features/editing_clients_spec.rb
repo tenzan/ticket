@@ -6,7 +6,7 @@ RSpec.feature 'Users can edit existing clients' do
 
   before do
     login_as(user)
-    assign_role!(user, :viewer, client)
+    assign_role!(user, :manager, client)
   
     visit '/'
     click_link 'Microsoft'
